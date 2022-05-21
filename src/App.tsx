@@ -1,8 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [lock, setLock] = React.useState<number>(0)
+
+  const my_click = React.useCallback(()=>{
+    setLock(lock+1)
+  },[lock])
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +15,8 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>{lock}</p>
+        <button onClick={my_click}>点击＋1</button>
       </header>
     </div>
   );
